@@ -1,0 +1,52 @@
+kind: pipeline
+type: docker
+name: default
+steps:
+    - name: build
+      image: node:18
+      commands:
+          - npm cache clean --force
+          - npm i --force
+          - npm run clear && npm run build
+    - name: upload
+      image: appleboy/drone-scp
+      settings:
+          host: 106.54.12.122
+          username: root
+          key:
+              from_secret: ssh_key
+          port: 22
+          command_timeout: 10m
+          target: /tmp/site
+          source:
+              - ./build
+    - name: deploy
+      image: appleboy/drone-ssh
+      settings:
+          host: 106.54.12.122
+          username: root
+          key:
+              from_secret: ssh_key
+          port: 22
+          script:
+              - cd /opt/1panel/apps/openresty/openresty/www/sites/main
+              - '[ -d ./index ] && rm -rf ./index'
+              - mv /tmp/site/build ./index && rm -rf /tmp/site
+# kind: pipeline
+# type: docker
+# name: default
+# steps:
+#     - name: deploy
+#       image: appleboy/drone-ssh
+#       settings:
+#           host: 82.157.68.83
+#           username: root
+#           key:
+#               from_secret: ssh_key
+#           port: 22
+#           script:
+#               - cd /data/1panel/apps/openresty/openresty/www/sites/site
+#               - '[ -d ./index ] && rm -rf ./index'
+#               # 这一行很重要，因为没有的话，第一次克隆就会失败
+#               - GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone -q git@git.pincman.com:classroom/site.git ./index
+#               - 'source ~/.zshrc; cd index && pnpm i --ignore-scripts && pnpm build'

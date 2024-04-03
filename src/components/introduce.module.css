@@ -1,0 +1,48 @@
+.container {
+    @apply tw-z-10 tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full;
+
+    & > .title {
+        @apply tw-mt-12 
+        lg:!tw-mt-20 
+        tw-mx-6 
+        tw-w-[30rem] 
+        md:!tw-w-full 
+        tw-text-5xl 
+        lg:tw-text-6xl 
+        tw-leading-tight 
+        tw-text-center 
+        tw-mb-4 
+        tw-bg-clip-text 
+        tw-text-transparent 
+        tw-bg-gradient-to-b 
+        tw-from-black/80 
+        tw-to-black;
+    }
+
+    & > .content {
+        @apply tw-mx-6 
+        tw-mt-3
+        tw-font-kaiti
+        tw-text-lg 
+        /* tw-min-h-[3.5rem] 
+        tw-max-h-[7rem]  */
+        /* md:tw-min-h-[3rem] 
+        md:tw-max-h-[6rem]  */
+        tw-w-[19.7rem] 
+        md:tw-w-[41.25rem] 
+        md:tw-text-xl 
+        tw-text-center 
+        tw-text-[#666666]
+        !tw-mb-0;
+    }
+}
+
+html[data-theme='dark'] {
+    .title {
+        @apply tw-from-white tw-to-[#AAAAAA];
+    }
+
+    .content {
+        @apply tw-text-[#888888];
+    }
+}

@@ -1,0 +1,234 @@
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(0);
+    }
+}
+
+.cardList {
+    @apply tw-flex 
+    tw-w-full 
+    tw-container 
+    tw-items-center 
+    tw-justify-center 
+    tw-gap-6 
+    tw-px-6 
+    sm:tw-mx-0 
+    tw-mt-8 
+    md:!tw-mt-14 
+    lg:!tw-mt-[3.5rem] 
+    md:tw-mb-0 
+    tw-flex-col 
+    lg:!tw-flex-row 
+    tw-z-10 
+    lg:!tw-translate-y-0;
+}
+
+.cardBg {
+    background: #fff;
+    box-shadow:
+        0 0 0 1px rgb(0 0 0 / 3%),
+        0 2px 4px rgb(0 0 0 / 5%),
+        0 12px 24px rgb(0 0 0 / 5%);
+}
+
+.card {
+    @apply tw-relative 
+     tw-w-full 
+     tw-h-full
+     tw-max-w-full 
+     !tw-pb-12 
+     tw-pt-8 
+     md:!tw-pb-4 
+     md:!tw-pt-4 
+     tw-p-3 
+     tw-rounded-xl 
+     tw-overflow-hidden 
+     tw-flex 
+     tw-flex-col 
+     tw-items-center 
+     tw-justify-center 
+     tw-border 
+     tw-border-[rgba(255,255,255,0.05)];
+
+    & > .title {
+        @apply tw-flex tw-items-center tw-justify-center sm:tw-mb-7 md:tw-mb-0 tw-flex-none;
+
+        & .titleBg {
+            @apply tw-pointer-events-none 
+            tw-absolute 
+            tw-w-[16.3125rem] 
+            tw-h-[16.3125rem] 
+            tw-top-1/2 
+            tw-left-1/2 
+            tw--translate-x-1/2 
+            tw--translate-y-1/2 
+            tw-bg-gradient-to-b
+            tw-mix-blend-normal 
+            tw-opacity-5
+            tw-blur-[60px];
+        }
+
+        & .titleContent {
+            @apply tw-py-5 tw-mb-4;
+        }
+    }
+
+    & > .content {
+        @apply tw-flex 
+        tw-flex-col 
+        tw-items-center 
+        tw-flex-1
+        tw-text-base 
+        !tw-w-[17.5rem] 
+        md:!tw-w-[21.25rem] 
+        tw-text-center 
+        tw-leading-8;
+
+        & > ul {
+            @apply tw-list-none
+            /* tw-opacity-50 */
+            tw-block;
+
+            & > li {
+                @apply tw-py-1
+                tw-w-full
+                tw-flex
+                tw-justify-start
+                tw-items-center
+                tw-transition-transform
+                hover:tw-translate-x-5;
+
+                &::before {
+                    width: 1rem;
+                    height: 1rem;
+                    margin-right: 0.35rem;
+                    content: '';
+                    background-color: #000;
+                    mask-repeat: no-repeat;
+                    mask-position: 50% 50%;
+                    mask-size: cover;
+                    mask-image: url('/images/icons/left.svg');
+
+                    @apply tw-bg-[color:rgb(88_80_80_/_66.1%)] hover:tw-bg-[color:var(--ifm-font-color-base)];
+                }
+
+                & > a {
+                    @apply tw-max-w-[99%]
+                    tw-overflow-hidden 
+                    tw-whitespace-nowrap 
+                    tw-text-ellipsis 
+                    tw-break-all
+                    tw-text-[color:rgb(88_80_80_/_66.1%)]
+                    hover:tw-text-[color:var(--ifm-font-color-base)];
+                }
+            }
+        }
+
+        & > .cardBtn {
+            @apply tw-mt-3;
+
+            & > a {
+                @apply tw-h-[2.7rem] tw-min-h-[2.7rem] tw-rounded-[0.3rem];
+            }
+        }
+    }
+}
+
+.cardLogo {
+    @apply tw-w-40 md:tw-w-[13.75rem] tw-mb-3 tw-fill-black dark:tw-fill-white;
+}
+
+.counterBorder {
+    --border-radius: 12px;
+    --border-size: 1px;
+    --padding: 1px;
+    --border-bg: conic-gradient(
+        from 180deg at 50% 50%,
+        #e92a67 0deg,
+        #a853ba 112.5deg,
+        #2a8af6 228.75deg,
+        rgb(42 138 246 / 0%) 360deg
+    );
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    padding: calc(var(--padding) + var(--border-size));
+    overflow: hidden;
+    font-size: 2rem;
+    border-radius: var(--border-radius);
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000;
+}
+
+.counterBorder:hover {
+    cursor: pointer;
+}
+
+.counterBorder i {
+    position: absolute;
+    inset: var(--border-size) var(--border-size) var(--border-size) var(--border-size);
+    z-index: -1;
+    padding: var(--border-size);
+    content: '';
+    border-radius: calc(var(--border-radius) + var(--border-size));
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+}
+
+.counterBorder i::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -2;
+    display: block;
+    width: calc(100% * 1.7);
+    padding-bottom: calc(100% * 1.7);
+    content: '';
+    background: var(--border-bg);
+    border-radius: 100%;
+    box-shadow: 0 0 40px 20px var(--border-bg);
+    transform: translate(-50%, -50%);
+    animation: spin 5s linear infinite;
+}
+
+@media (prefers-reduced-motion) {
+    .heroLines {
+        animation: none;
+    }
+
+    .counterBorder i::before {
+        animation: none;
+    }
+}
+
+html[data-theme='dark'] {
+    .content {
+        @apply tw-opacity-70;
+
+        & > ul > li {
+            @apply before:tw-bg-[color:rgb(188_180_180_/_66.1%)] before:hover:tw-text-[color:rgb(245_240_240)];
+
+            & > a {
+                @apply tw-text-[color:rgb(188_180_180_/_66.1%)] hover:tw-text-[color:rgb(245_240_240)];
+            }
+        }
+    }
+
+    .cardBg {
+        /* background: rgba(0, 0, 0, 0.8); */
+        background: #000;
+        border: 1px solid rgb(255 255 255 / 10%);
+        box-shadow: 0 20px 48px rgb(0 0 0 / 20%);
+    }
+
+    .titleBg {
+        @apply !tw-opacity-[0.15];
+    }
+}

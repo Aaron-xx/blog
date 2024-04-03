@@ -1,0 +1,14 @@
+{
+    "extends": "./tsconfig.json",
+    "include": [
+        "./src",
+        "./data/setting",
+        "./data/demo",
+        "./data/options",
+        "./scripts",
+        "./typings",
+        "**.ts",
+        "**.js"
+    ],
+    "exclude": [".docusaurus", "node_modules", "**/node_modules/*", "back", "static"]
+}
