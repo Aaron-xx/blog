@@ -7,6 +7,12 @@ const sidebars: SidebarsConfig = {
             dirName: 'blog',
         },
     ],
+    linux: [
+        {},
+    ],
+    driver: [
+        {},
+    ],
 };
 
 export default sidebars;

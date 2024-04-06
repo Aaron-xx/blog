@@ -27,7 +27,8 @@ export const Footer: FC<{ className?: string }> = ({ className }) => {
                 )}
                 <div className={clsx($styles.btn, $styles.themeby)}>
                     <span>Theme by</span>
-                    <Link href="/wiki/rowfish/" target="_blank" rel="noreferrer">
+                    <Link href="" target="_blank" rel="noreferrer">
+                    {/* <Link href="/wiki/rowfish/" target="_blank" rel="noreferrer"> */}
                         rowfish
                     </Link>
                 </div>

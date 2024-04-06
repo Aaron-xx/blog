@@ -22,7 +22,7 @@ export const siteData: SiteDataType = {
 export const dockItems: DockItem[] = [
     {
         name: '知乎',
-        href: 'https://www.zhihu.com/people/pincman',
+        href: 'https://www.zhihu.com/people/aaronlx',
         icon: Zhihu,
         target: '_blank',
     },

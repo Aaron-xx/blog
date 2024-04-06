@@ -14,12 +14,12 @@ export const navItems: NavbarItem[] = [
         position: 'right',
         className: 'navicon links-icon',
     },
-    {
-        to: '/links',
-        label: '导航',
-        position: 'right',
-        className: 'navicon links-icon',
-    },
+    // {
+    //     to: '/links',
+    //     label: '导航',
+    //     position: 'right',
+    //     className: 'navicon links-icon',
+    // },
     // {
     //     to: '/blog/about',
     //     label: '关于',

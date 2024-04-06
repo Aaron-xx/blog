@@ -50,12 +50,12 @@ export const LandingIntroduce: FC = () => {
                     </span>
                 </div>
                 <div className="tw-mt-1 xs:tw-mt-1">
-                    <Link
+                    {/* <Link
                         className="tw-text-xl tw-font-semibold tw-text-black dark:tw-text-white tw-pt-5 tw-animate-decoration hover:!tw-bg-[size:100%_3px]"
                         href="/classroom"
                     >
-                        {/* 欢迎加入🤝 */}
-                    </Link>
+                        欢迎加入🤝
+                    </Link> */}
                     {/* <span className="tw-text-xl tw-text-black dark:tw-text-white tw-pt-5">！</span> */}
                 </div>
             </div>

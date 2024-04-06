@@ -21,4 +21,5 @@ export const docusaurus = createDocuConfig({
     blog: {
         blogTitle: '记录关于我的学习历程！',
     },
+    onBrokenLinks: "ignore",
 });
